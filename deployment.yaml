@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lambda-trigger-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lambda-trigger
+  template:
+    metadata:
+      labels:
+        app: lambda-trigger
+    spec:
+      containers:
+      - name: lambda-trigger-container
+        image: shaikmajidali/lambda-trigger:latest
+        ports:
+        - containerPort: 80
